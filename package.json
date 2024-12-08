@@ -21,7 +21,8 @@
   "main": "./extension.js",
   "scripts": {
     "format:fix": "prettier . --write",
-    "sort-package-json:fix": "sort-package-json"
+    "sort-package-json:fix": "sort-package-json",
+    "validate:fix": "npm run format:fix && npm run sort-package-json:fix"
   },
   "contributes": {
     "commands": [
