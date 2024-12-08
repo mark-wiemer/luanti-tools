@@ -1,28 +1,28 @@
 {
   "name": "luanti-tools",
   "displayName": "Luanti Tools",
-  "description": "IntelliSense and more for Luanti, the open-source voxel game engine",
-  "icon": "icon.png",
   "version": "2.0.0",
-  "author": {
-    "name": "GreenXenith and Mark Wiemer"
+  "description": "IntelliSense and more for Luanti, the open-source voxel game engine",
+  "categories": [
+    "Other"
+  ],
+  "bugs": {
+    "url": "https://github.com/mark-wiemer/luanti-tools/issues"
   },
-  "publisher": "Mark Wiemer",
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/mark-wiemer/luanti-tools.git"
   },
-  "bugs": {
-    "url": "https://github.com/mark-wiemer/luanti-tools/issues"
+  "license": "MIT",
+  "author": {
+    "name": "GreenXenith and Mark Wiemer"
   },
-  "engines": {
-    "vscode": "^1.41.0"
-  },
-  "categories": [
-    "Other"
-  ],
+  "publisher": "Mark Wiemer",
   "main": "./extension.js",
+  "scripts": {
+    "format:fix": "prettier . --write",
+    "sort-package-json:fix": "sort-package-json"
+  },
   "contributes": {
     "commands": [
       {
@@ -54,12 +54,6 @@
         }
       }
     ],
-    "snippets": [
-      {
-        "language": "lua",
-        "path": "./snippets.json"
-      }
-    ],
     "grammars": [
       {
         "scopeName": "source.formspec",
@@ -78,6 +72,12 @@
         "fileMatch": ".cdb.json",
         "url": "./cdb_schema.json"
       }
+    ],
+    "snippets": [
+      {
+        "language": "lua",
+        "path": "./snippets.json"
+      }
     ]
   },
   "devDependencies": {
@@ -89,10 +89,12 @@
     "glob": "^7.1.5",
     "mocha": "^10.2.0",
     "prettier": "^3.3.3",
+    "sort-package-json": "^2.12.0",
     "typescript": "^3.6.4",
     "vscode-test": "^1.2.2"
   },
-  "scripts": {
-    "format:fix": "prettier . --write"
-  }
+  "engines": {
+    "vscode": "^1.41.0"
+  },
+  "icon": "icon.png"
 }
