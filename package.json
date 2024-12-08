@@ -1,94 +1,98 @@
 {
-    "name": "luanti-tools",
-    "displayName": "Luanti Tools",
-    "description": "Useful tools for Luanti developers.",
-    "icon": "icon.png",
-    "version": "2.0.0",
-    "author": {
-        "name": "GreenXenith and Mark Wiemer"
-    },
-    "publisher": "Mark Wiemer",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/mark-wiemer/luanti-tools.git"
-    },
-    "bugs": {
-        "url": "https://github.com/mark-wiemer/luanti-tools/issues"
-    },
-    "engines": {
-        "vscode": "^1.41.0"
-    },
-    "categories": [
-        "Other"
+  "name": "luanti-tools",
+  "displayName": "Luanti Tools",
+  "description": "IntelliSense and more for Luanti, the open-source voxel game engine",
+  "icon": "icon.png",
+  "version": "2.0.0",
+  "author": {
+    "name": "GreenXenith and Mark Wiemer"
+  },
+  "publisher": "Mark Wiemer",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mark-wiemer/luanti-tools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mark-wiemer/luanti-tools/issues"
+  },
+  "engines": {
+    "vscode": "^1.41.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.modProject",
+        "title": "Luanti Tools: New Mod Project"
+      },
+      {
+        "command": "extension.gameProject",
+        "title": "Luanti Tools: New Game Project"
+      },
+      {
+        "command": "extension.luacheckrc",
+        "title": "Luanti Tools: Create .luacheckrc"
+      },
+      {
+        "command": "extension.workspaceToggle",
+        "title": "Luanti Tools: Toggle Workspace Intellisense"
+      }
     ],
-    "main": "./extension.js",
-    "contributes": {
-        "commands": [
-            {
-                "command": "extension.modProject",
-                "title": "Luanti Tools: New Mod Project"
-            },
-            {
-                "command": "extension.gameProject",
-                "title": "Luanti Tools: New Game Project"
-            },
-            {
-                "command": "extension.luacheckrc",
-                "title": "Luanti Tools: Create .luacheckrc"
-            },
-            {
-                "command": "extension.workspaceToggle",
-                "title": "Luanti Tools: Toggle Workspace Intellisense"
-            }
-        ],
-        "configuration": [
-            {
-                "title": "Luanti Tools",
-                "properties": {
-                    "minetest-tools.workspaceOnly": {
-                        "type": "boolean",
-                        "default": true,
-                        "description": "Code snippets will only be shown if certain files (init.lua, mods, modpack.txt) are detected in the main workspace folder."
-                    }
-                }
-            }
-        ],
-        "snippets": [
-            {
-                "language": "lua",
-                "path": "./snippets.json"
-            }
-        ],
-        "grammars": [
-            {
-                "scopeName": "source.formspec",
-                "path": "formspec.json",
-                "injectTo": [
-                    "source.lua"
-                ]
-            }
-        ],
-        "jsonValidation": [
-            {
-                "fileMatch": ".cdb.json",
-                "url": "https://content.luanti.org/api/cdb_schema/"
-            },
-            {
-                "fileMatch": ".cdb.json",
-                "url": "./cdb_schema.json"
-            }
+    "configuration": [
+      {
+        "title": "Luanti Tools",
+        "properties": {
+          "minetest-tools.workspaceOnly": {
+            "type": "boolean",
+            "default": true,
+            "description": "Code snippets will only be shown if certain files (init.lua, mods, modpack.txt) are detected in the main workspace folder."
+          }
+        }
+      }
+    ],
+    "snippets": [
+      {
+        "language": "lua",
+        "path": "./snippets.json"
+      }
+    ],
+    "grammars": [
+      {
+        "scopeName": "source.formspec",
+        "path": "formspec.json",
+        "injectTo": [
+          "source.lua"
         ]
-    },
-    "devDependencies": {
-        "@types/glob": "^7.1.1",
-        "@types/mocha": "^5.2.7",
-        "@types/node": "^12.11.7",
-        "@types/vscode": "^1.41.0",
-        "eslint": "^6.6.0",
-        "glob": "^7.1.5",
-        "mocha": "^10.2.0",
-        "typescript": "^3.6.4",
-        "vscode-test": "^1.2.2"
-    }
+      }
+    ],
+    "jsonValidation": [
+      {
+        "fileMatch": ".cdb.json",
+        "url": "https://content.luanti.org/api/cdb_schema/"
+      },
+      {
+        "fileMatch": ".cdb.json",
+        "url": "./cdb_schema.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.41.0",
+    "eslint": "^6.6.0",
+    "glob": "^7.1.5",
+    "mocha": "^10.2.0",
+    "prettier": "^3.3.3",
+    "typescript": "^3.6.4",
+    "vscode-test": "^1.2.2"
+  },
+  "scripts": {
+    "format:fix": "prettier . --write"
+  }
 }
