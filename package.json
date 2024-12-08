@@ -17,10 +17,13 @@
   "author": {
     "name": "GreenXenith and Mark Wiemer"
   },
-  "publisher": "Mark Wiemer",
+  "publisher": "mark-wiemer",
   "main": "./extension.js",
   "scripts": {
+    "build": "node snippets.js && prettier smartsnippets.json --write",
     "format:fix": "prettier . --write",
+    "prepackage": "npm run build",
+    "package": "vsce package",
     "sort-package-json:fix": "sort-package-json",
     "validate:fix": "npm run format:fix && npm run sort-package-json:fix"
   },
@@ -81,11 +84,13 @@
       }
     ]
   },
+  "activationEvents": [],
   "devDependencies": {
     "@types/glob": "^7.1.1",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.11.7",
     "@types/vscode": "^1.41.0",
+    "@vscode/vsce": "^3.2.1",
     "eslint": "^6.6.0",
     "glob": "^7.1.5",
     "mocha": "^10.2.0",
