@@ -1,8 +1,8 @@
 {
-  "recommendations": [
-    "esbenp.prettier-vscode",
-    "github.vscode-pull-request-github",
-    "eamodio.gitlens",
-    "tyriar.sort-lines"
-  ]
+    "recommendations": [
+        "esbenp.prettier-vscode",
+        "github.vscode-pull-request-github",
+        "eamodio.gitlens",
+        "tyriar.sort-lines"
+    ]
 }

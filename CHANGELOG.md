@@ -16,10 +16,10 @@
 
 - API autocompletion bumped to Minetest version 5.4.1
 - Rewrote snippet generator
-  - No longer requires manual input
-  - Captures all API methods, tables, and constants
-  - Adjusted quick info formatting
-  - Includes API links
+    - No longer requires manual input
+    - Captures all API methods, tables, and constants
+    - Adjusted quick info formatting
+    - Includes API links
 - CompletionItemProvider can handle some backspacing now
 - Texture modifiers will remove trailing bracket if autocompleted
 - Global constructors and namespaces now have snippets

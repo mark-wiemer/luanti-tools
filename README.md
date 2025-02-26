@@ -17,15 +17,15 @@ Note: Code snippets were generated from `lua_api.md` using `snippets.js`. Qualit
 
 - `editor.quickSuggestions.strings`: Some snippets (formspecs, texture modifiers) depend on string suggestions being enabled. This can be very annoying sometimes, so the snippets will only work if the `string` key in `editor.quickSuggestions` is set to `true`.
 
-  It should look something like this:
+    It should look something like this:
 
-  ```json
-  "editor.quickSuggestions": {
-    "other": true,
-    "comments": false,
-    "strings": true
-  }
-  ```
+    ```json
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    }
+    ```
 
 ## TODO
 
@@ -53,10 +53,10 @@ Note: Code snippets were generated from `lua_api.md` using `snippets.js`. Qualit
 
 - API autocompletion bumped to Minetest version 5.4.1
 - Rewrote snippet generator
-  - No longer requires manual input
-  - Captures all API methods, tables, and constants
-  - Adjusted quick info formatting
-  - Includes API links
+    - No longer requires manual input
+    - Captures all API methods, tables, and constants
+    - Adjusted quick info formatting
+    - Includes API links
 - CompletionItemProvider can handle some backspacing now
 - Methods with functions as parameters are a little smarter now
 - Texture modifiers will remove trailing bracket if autocompleted

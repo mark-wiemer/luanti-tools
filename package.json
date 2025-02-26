@@ -1,106 +1,109 @@
 {
-  "name": "luanti-tools",
-  "displayName": "Luanti Tools",
-  "version": "2.0.0",
-  "description": "IntelliSense and more for Luanti, the open-source voxel game engine",
-  "categories": [
-    "Other"
-  ],
-  "bugs": {
-    "url": "https://github.com/mark-wiemer/luanti-tools/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mark-wiemer/luanti-tools.git"
-  },
-  "license": "MIT",
-  "author": {
-    "name": "GreenXenith and Mark Wiemer"
-  },
-  "publisher": "mark-wiemer",
-  "main": "./extension.js",
-  "scripts": {
-    "build": "node snippets.js && prettier smartsnippets.json --write",
-    "format:fix": "prettier . --write",
-    "prepackage": "npm run build",
-    "package": "vsce package",
-    "sort-package-json:fix": "sort-package-json",
-    "validate:fix": "npm run format:fix && npm run sort-package-json:fix"
-  },
-  "contributes": {
-    "commands": [
-      {
-        "command": "extension.modProject",
-        "title": "Luanti Tools: New Mod Project"
-      },
-      {
-        "command": "extension.gameProject",
-        "title": "Luanti Tools: New Game Project"
-      },
-      {
-        "command": "extension.luacheckrc",
-        "title": "Luanti Tools: Create .luacheckrc"
-      },
-      {
-        "command": "extension.workspaceToggle",
-        "title": "Luanti Tools: Toggle Workspace Intellisense"
-      }
+    "name": "luanti-tools",
+    "displayName": "Luanti Tools",
+    "version": "2.0.0",
+    "description": "IntelliSense and more for Luanti, the open-source voxel game engine",
+    "categories": [
+        "Other"
     ],
-    "configuration": [
-      {
-        "title": "Luanti Tools",
-        "properties": {
-          "minetest-tools.workspaceOnly": {
-            "type": "boolean",
-            "default": true,
-            "description": "Code snippets will only be shown if certain files (init.lua, mods, modpack.txt) are detected in the main workspace folder."
-          }
-        }
-      }
-    ],
-    "grammars": [
-      {
-        "scopeName": "source.formspec",
-        "path": "formspec.json",
-        "injectTo": [
-          "source.lua"
+    "bugs": {
+        "url": "https://github.com/mark-wiemer/luanti-tools/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mark-wiemer/luanti-tools.git"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "GreenXenith and Mark Wiemer"
+    },
+    "publisher": "mark-wiemer",
+    "prettier": {
+        "tabWidth": 4
+    },
+    "main": "./extension.js",
+    "scripts": {
+        "build": "node snippets.js && prettier smartsnippets.json --write",
+        "format:fix": "prettier . --write",
+        "prepackage": "npm run build",
+        "package": "vsce package",
+        "sort-package-json:fix": "sort-package-json",
+        "validate:fix": "npm run format:fix && npm run sort-package-json:fix"
+    },
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.modProject",
+                "title": "Luanti Tools: New Mod Project"
+            },
+            {
+                "command": "extension.gameProject",
+                "title": "Luanti Tools: New Game Project"
+            },
+            {
+                "command": "extension.luacheckrc",
+                "title": "Luanti Tools: Create .luacheckrc"
+            },
+            {
+                "command": "extension.workspaceToggle",
+                "title": "Luanti Tools: Toggle Workspace Intellisense"
+            }
+        ],
+        "configuration": [
+            {
+                "title": "Luanti Tools",
+                "properties": {
+                    "minetest-tools.workspaceOnly": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Code snippets will only be shown if certain files (init.lua, mods, modpack.txt) are detected in the main workspace folder."
+                    }
+                }
+            }
+        ],
+        "grammars": [
+            {
+                "scopeName": "source.formspec",
+                "path": "formspec.json",
+                "injectTo": [
+                    "source.lua"
+                ]
+            }
+        ],
+        "jsonValidation": [
+            {
+                "fileMatch": ".cdb.json",
+                "url": "https://content.luanti.org/api/cdb_schema/"
+            },
+            {
+                "fileMatch": ".cdb.json",
+                "url": "./cdb_schema.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "lua",
+                "path": "./snippets.json"
+            }
         ]
-      }
-    ],
-    "jsonValidation": [
-      {
-        "fileMatch": ".cdb.json",
-        "url": "https://content.luanti.org/api/cdb_schema/"
-      },
-      {
-        "fileMatch": ".cdb.json",
-        "url": "./cdb_schema.json"
-      }
-    ],
-    "snippets": [
-      {
-        "language": "lua",
-        "path": "./snippets.json"
-      }
-    ]
-  },
-  "activationEvents": [],
-  "devDependencies": {
-    "@types/glob": "^7.1.1",
-    "@types/mocha": "^5.2.7",
-    "@types/node": "^12.11.7",
-    "@types/vscode": "^1.41.0",
-    "@vscode/vsce": "^3.2.1",
-    "eslint": "^6.6.0",
-    "glob": "^7.1.5",
-    "mocha": "^10.2.0",
-    "prettier": "^3.3.3",
-    "sort-package-json": "^2.12.0",
-    "typescript": "^3.6.4",
-    "vscode-test": "^1.2.2"
-  },
-  "engines": {
-    "vscode": "^1.41.0"
-  },
-  "icon": "icon.png"
+    },
+    "activationEvents": [],
+    "devDependencies": {
+        "@types/glob": "^7.1.1",
+        "@types/mocha": "^5.2.7",
+        "@types/node": "^12.11.7",
+        "@types/vscode": "^1.41.0",
+        "@vscode/vsce": "^3.2.1",
+        "eslint": "^6.6.0",
+        "glob": "^7.1.5",
+        "mocha": "^10.2.0",
+        "prettier": "3.5.2",
+        "sort-package-json": "^2.12.0",
+        "typescript": "^3.6.4",
+        "vscode-test": "^1.2.2"
+    },
+    "engines": {
+        "vscode": "^1.41.0"
+    },
+    "icon": "icon.png"
 }
