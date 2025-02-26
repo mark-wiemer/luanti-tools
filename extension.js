@@ -149,26 +149,14 @@ function activate(context) {
             if (rootPath == "") return;
             const name = vscode.workspace.name;
             const files = [
-                {
-                    name: "init.lua",
-                    content: "",
-                },
+                { name: "init.lua", content: "" },
                 {
                     name: "mod.conf",
                     content: `name = ${name}\ndescription = \ndepends = \noptional_depends = `,
                 },
-                {
-                    name: "README.md",
-                    content: "",
-                },
-                {
-                    name: "LICENSE.txt",
-                    content: "",
-                },
-                {
-                    name: ".luacheckrc",
-                    content: luacheckrc,
-                },
+                { name: "README.md", content: "" },
+                { name: "LICENSE.txt", content: "" },
+                { name: ".luacheckrc", content: luacheckrc },
             ];
             const folders = ["textures", "models", "sounds"];
             makeFiles(files, folders);
@@ -190,18 +178,9 @@ function activate(context) {
                             return m.toUpperCase();
                         })}\nauthor = \ndescription = `,
                 },
-                {
-                    name: "README.md",
-                    content: "",
-                },
-                {
-                    name: "LICENSE.txt",
-                    content: "",
-                },
-                {
-                    name: ".luacheckrc",
-                    content: luacheckrc,
-                },
+                { name: "README.md", content: "" },
+                { name: "LICENSE.txt", content: "" },
+                { name: ".luacheckrc", content: luacheckrc },
             ];
             const folders = ["menu", "mods"];
             makeFiles(files, folders);
@@ -213,15 +192,7 @@ function activate(context) {
         "extension.luacheckrc",
         () => {
             if (rootPath == "") return;
-            makeFiles(
-                [
-                    {
-                        name: ".luacheckrc",
-                        content: luacheckrc,
-                    },
-                ],
-                [],
-            );
+            makeFiles([{ name: ".luacheckrc", content: luacheckrc }], []);
         },
     );
 
@@ -234,8 +205,8 @@ function activate(context) {
             conf.update("workspaceOnly", newVal, true);
             vscode.window.showInformationMessage(
                 newVal
-                    ? "Minetest Intellisense active in workspace only."
-                    : "Minetest Intellisense active for all Lua files.",
+                    ? "Luanti IntelliSense active in workspace only."
+                    : "Luanti IntelliSense active for all Lua files.",
             );
         },
     );
@@ -248,10 +219,8 @@ function activate(context) {
         toggle,
     );
 
-    console.log("Minetest Tools extension is active.");
+    console.log("Luanti Tools extension is active.");
 }
 exports.activate = activate;
 
-module.exports = {
-    activate,
-};
+module.exports = { activate };

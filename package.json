@@ -1,31 +1,38 @@
 {
-    "name": "luanti-tools",
+    "name": "minetest-tools",
     "displayName": "Luanti Tools",
     "version": "1.4.3",
-    "description": "IntelliSense and more for Luanti, the open-source voxel game engine",
+    "description": "Useful tools for Luanti developers.",
     "categories": [
         "Other"
     ],
     "bugs": {
-        "url": "https://github.com/mark-wiemer/luanti-tools/issues"
+        "url": "https://github.com/GreenXenith/luanti-tools/issues"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/mark-wiemer/luanti-tools.git"
+        "url": "https://github.com/GreenXenith/luanti-tools.git"
     },
     "license": "MIT",
     "author": {
-        "name": "GreenXenith and Mark Wiemer"
+        "name": "GreenXenith"
     },
-    "publisher": "mark-wiemer",
+    "publisher": "GreenXenith",
     "main": "./extension.js",
     "scripts": {
-        "build": "node snippets.js && prettier smartsnippets.json --write",
+        "build": "node snippets.js",
+        "build:dev": "build && npm run format:smartsnippets",
+        "build//": "echo Generates the snippets",
+        "format": "prettier . --check",
         "format:fix": "prettier . --write",
+        "format:fix//": "echo Fixes all formatting in the repo",
+        "format:smartsnippets": "prettier smartsnippets.json --write",
+        "format:smartsnippets//": "echo Formats smartsnippets.json for debugging",
+        "format//": "echo Checks formatting of the repo, exiting with error if not formatted",
         "prepackage": "npm run build",
-        "package": "vsce package",
-        "sort-package-json:fix": "sort-package-json",
-        "validate:fix": "npm run format:fix && npm run sort-package-json:fix"
+        "package": "vsce package --allow-star-activation",
+        "postpackage": "npm run format:smartsnippets",
+        "package//": "echo Packages the extension for installation. todo don't use star activation"
     },
     "contributes": {
         "commands": [
@@ -97,10 +104,8 @@
         "eslint": "^6.6.0",
         "glob": "^7.1.5",
         "mocha": "^10.2.0",
-        "prettier": "3.5.2",
-        "sort-package-json": "^2.12.0",
-        "typescript": "^3.6.4",
-        "vscode-test": "^1.2.2"
+        "prettier": "3.3.3",
+        "typescript": "^3.6.4"
     },
     "engines": {
         "vscode": "^1.41.0"
