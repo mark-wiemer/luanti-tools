@@ -1,7 +1,7 @@
 {
     "name": "luanti-tools",
     "displayName": "Luanti Tools",
-    "version": "2.0.0",
+    "version": "1.4.3",
     "description": "IntelliSense and more for Luanti, the open-source voxel game engine",
     "categories": [
         "Other"
