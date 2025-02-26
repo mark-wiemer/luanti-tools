@@ -18,9 +18,6 @@
         "name": "GreenXenith and Mark Wiemer"
     },
     "publisher": "mark-wiemer",
-    "prettier": {
-        "tabWidth": 4
-    },
     "main": "./extension.js",
     "scripts": {
         "build": "node snippets.js && prettier smartsnippets.json --write",
@@ -88,6 +85,9 @@
         ]
     },
     "activationEvents": [],
+    "prettier": {
+        "tabWidth": 4
+    },
     "devDependencies": {
         "@types/glob": "^7.1.1",
         "@types/mocha": "^5.2.7",
