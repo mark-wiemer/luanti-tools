@@ -24,7 +24,7 @@
         "build:dev": "build && npm run format:smartsnippets",
         "build//": "echo Generates the snippets",
         "format": "prettier . --check",
-        "format:fix": "prettier . --write",
+        "format:fix": "prettier . --write && sort-package-json",
         "format:fix//": "echo Fixes all formatting in the repo",
         "format:smartsnippets": "prettier smartsnippets.json --write",
         "format:smartsnippets//": "echo Formats smartsnippets.json for debugging",
@@ -105,6 +105,7 @@
         "glob": "^7.1.5",
         "mocha": "^10.2.0",
         "prettier": "3.3.3",
+        "sort-package-json": "^2.14.0",
         "typescript": "^3.6.4"
     },
     "engines": {
