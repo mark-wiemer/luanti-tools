@@ -30,9 +30,9 @@
         "format:smartsnippets//": "echo Formats smartsnippets.json for debugging",
         "format//": "echo Checks formatting of the repo, exiting with error if not formatted",
         "prepackage": "npm run build",
-        "package": "vsce package --allow-star-activation",
+        "package": "vsce package",
         "postpackage": "npm run format:smartsnippets",
-        "package//": "echo Packages the extension for installation. todo don't use star activation"
+        "package//": "echo Packages the extension for installation."
     },
     "contributes": {
         "commands": [
