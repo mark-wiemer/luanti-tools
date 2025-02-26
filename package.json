@@ -1,48 +1,38 @@
 {
     "name": "minetest-tools",
     "displayName": "Luanti Tools",
-    "description": "Useful tools for Luanti developers.",
-    "icon": "icon.png",
     "version": "1.4.3",
-    "author": {
-        "name": "GreenXenith"
+    "description": "Useful tools for Luanti developers.",
+    "categories": [
+        "Other"
+    ],
+    "bugs": {
+        "url": "https://github.com/GreenXenith/luanti-tools/issues"
     },
-    "publisher": "GreenXenith",
-    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/GreenXenith/luanti-tools.git"
     },
-    "bugs": {
-        "url": "https://github.com/GreenXenith/luanti-tools/issues"
+    "license": "MIT",
+    "author": {
+        "name": "GreenXenith"
     },
-    "engines": {
-        "vscode": "^1.41.0"
-    },
-    "categories": [
-        "Other"
-    ],
-    "activationEvents": [
-        "*"
-    ],
+    "publisher": "GreenXenith",
     "main": "./extension.js",
     "scripts": {
-        "build//": "echo Generates the snippets",
         "build": "node snippets.js",
         "build:dev": "build && npm run format:smartsnippets",
-        "format//": "echo Checks formatting of the repo, exiting with error if not formatted",
+        "build//": "echo Generates the snippets",
         "format": "prettier . --check",
+        "format:fix": "prettier . --write && sort-package-json",
         "format:fix//": "echo Fixes all formatting in the repo",
-        "format:fix": "prettier . --write",
-        "format:smartsnippets//": "echo Formats smartsnippets.json for debugging",
         "format:smartsnippets": "prettier smartsnippets.json --write",
+        "format:smartsnippets//": "echo Formats smartsnippets.json for debugging",
+        "format//": "echo Checks formatting of the repo, exiting with error if not formatted",
         "prepackage": "npm run build",
-        "package//": "echo Packages the extension for installation. todo don't use star activation",
-        "package": "vsce package --allow-star-activation",
-        "postpackage": "npm run format:smartsnippets"
-    },
-    "prettier": {
-        "tabWidth": 4
+        "package": "vsce package",
+        "postpackage": "npm run format:smartsnippets",
+        "package//": "echo Packages the extension for installation."
     },
     "contributes": {
         "commands": [
@@ -75,12 +65,6 @@
                 }
             }
         ],
-        "snippets": [
-            {
-                "language": "lua",
-                "path": "./snippets.json"
-            }
-        ],
         "grammars": [
             {
                 "scopeName": "source.formspec",
@@ -99,7 +83,17 @@
                 "fileMatch": ".cdb.json",
                 "url": "./cdb_schema.json"
             }
+        ],
+        "snippets": [
+            {
+                "language": "lua",
+                "path": "./snippets.json"
+            }
         ]
+    },
+    "activationEvents": [],
+    "prettier": {
+        "tabWidth": 4
     },
     "devDependencies": {
         "@types/glob": "^7.1.1",
@@ -111,6 +105,11 @@
         "glob": "^7.1.5",
         "mocha": "^10.2.0",
         "prettier": "3.3.3",
+        "sort-package-json": "^2.14.0",
         "typescript": "^3.6.4"
-    }
+    },
+    "engines": {
+        "vscode": "^1.41.0"
+    },
+    "icon": "icon.png"
 }

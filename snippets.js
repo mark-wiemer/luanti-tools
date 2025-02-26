@@ -2,7 +2,6 @@ const fs = require("fs");
 
 function docLink(api, search) {
     const line = api.substring(0, api.indexOf(search)).split("\n").length;
-    // return line > 1 ? `\n\n[View in lua_api.md](https://github.com/minetest/minetest/blob/5.4.1/doc/lua_api.md#L${line}-L${line + search.split("\n").length - 1})` : ""
     if (line > 1) return `L${line}-L${line + search.split("\n").length - 1}`;
 }
 
@@ -12,7 +11,7 @@ const objects = (entry, api) => {
     entry = entry.substr(1);
     // The documented thing (* `between here`:)
     const name = entry.match(/^\* `([^\n`:]+)/)[1];
-    // The specific name (* `minetest.justthisfunction(but, not, the, args)`:)
+    // The specific name (* `core.justthisfunction(but, not, the, args)`:)
     const lookfor = name.match(/(?:\S+?\.)?([^\(]+)/)[1];
     // The completed thing without namespaces and with argument tabstops if applicable
     let i = 0;
@@ -51,7 +50,7 @@ types.push([/\n\* `(?!dump)[^\(][^`:]+\).*(?:\n+ +.+)*/g, objects]);
 
 // Lists and objects
 types.push([
-    /\n\* `minetest\.(?!conf)(?![A-Z_\-]+?`)[^\(\)]+?`.*(?:\n+ +.+)*/g,
+    /\n\* `core\.(?!conf)(?![A-Z_\-]+?`)[^\(\)]+?`.*(?:\n+ +.+)*/g,
     objects,
 ]);
 
@@ -87,7 +86,7 @@ types.push([
                         /<(.+?)>|(\.\.\.)/g,
                         (arg1, arg2) => `\${${++i}:${arg1 || arg2}}`,
                     ) + "$0",
-            desc: entry.match(/^([\S\s]+?)\n*$/)[1], // + docLink(api, entry),
+            desc: entry.match(/^([\S\s]+?)\n*$/)[1],
             doc_lines: docLink(api, entry),
             kind: 7,
             detail: "Texture Modifier",
@@ -98,16 +97,16 @@ types.push([
 
 // Constants
 types.push([
-    /[`']minetest\.[A-Z_\-]+[`'](?:.{5,}|.{0})/g,
+    /[`']core\.[A-Z_\-]+[`'](?:.{5,}|.{0})/g,
     (entry, api) => {
         return {
             prefix: entry.match(/[`'](.+?)[`']/)[1],
             body: entry.match(/\.(.+?)[`']/)[1],
-            desc: entry.replace(/'/g, "`"), // + docLink(api, entry),
+            desc: entry.replace(/'/g, "`"),
             doc_lines: docLink(api, entry),
             kind: 11,
             detail: "Constant",
-            token: "minetest.",
+            token: "core.",
         };
     },
 ]);
@@ -124,6 +123,7 @@ function getSnippets(api) {
     return snippets;
 }
 
+// todo this isn't getting snippets for the whole lua_api.md anymore
 fs.readFile("./lua_api.md", "utf8", (err, data) => {
     if (!err)
         fs.writeFile(
