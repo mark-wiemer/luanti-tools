@@ -21,9 +21,9 @@ Note: Code snippets were generated from `lua_api.md` using `snippets.js`. Qualit
 
     ```json
     "editor.quickSuggestions": {
-      "other": true,
-      "comments": false,
-      "strings": true
+        "other": true,
+        "comments": false,
+        "strings": true
     }
     ```
 
